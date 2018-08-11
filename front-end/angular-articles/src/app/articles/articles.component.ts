@@ -14,11 +14,12 @@ import * as _ from 'lodash';
 })
 
 export class ArticlesComponent {
-  dataSource : any = {};
+  dataSource : any = [];
   displayedColumns = ['title', 'created_at', 'action'];
   constructor(private apiarticlesService: ApiarticlesService) { }
   
   ngOnInit() {
+    this.dataSource = [];
     this.dataSource = new ArticlesDataSource(this.apiarticlesService);
   }
 

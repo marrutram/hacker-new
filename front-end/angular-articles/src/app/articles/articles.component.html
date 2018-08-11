@@ -5,6 +5,7 @@
   </div>
   <mat-table [dataSource]="dataSource" >
     <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let articles" [ngClass]="'rowArticles'" (click)="getUrl(articles)"> 
         <span class="title">
           <div  *ngIf="articles.story_title !== null; then thenTitle else elseTitle"> </div>
@@ -19,11 +20,13 @@
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="created_at">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let articles" (click)="getUrl(articles)"> 
         <span class="time"> {{getFormatDate(articles)}} </span>
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let articles" (click)="getDelete(articles)" [ngClass]="'rowTrash'"> 
         <fa name="trash" size="1x"></fa>
       </mat-cell>
