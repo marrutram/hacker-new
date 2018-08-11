@@ -22,6 +22,6 @@ export class ApiarticlesService {
   }
 
   deleteArticle(id : string) {
-  	return this.http.delete(this.serviceUrl + '/' + id).map((res: Response) => res.json());
+  	return this.http.post(this.serviceUrl, {id}).map((res: Response) => res.json());
   }
 }
