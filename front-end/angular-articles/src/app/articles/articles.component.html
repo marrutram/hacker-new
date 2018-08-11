@@ -1,0 +1,34 @@
+<div class="articles">
+  <div  class="head">
+    <div class="head-title"> HN Fedd</div>
+    <div class="head-sub-title"> We <3 hacker news! </div>
+  </div>
+  <mat-table [dataSource]="dataSource" >
+    <ng-container matColumnDef="title">
+      <mat-cell *matCellDef="let articles" [ngClass]="'rowArticles'" (click)="getUrl(articles)"> 
+        <span class="title">
+          <div  *ngIf="articles.story_title !== null; then thenTitle else elseTitle"> </div>
+          <ng-template #thenTitle>
+            {{articles.story_title}}
+          </ng-template>
+          <ng-template #elseTitle>
+            {{articles.title}}
+          </ng-template>
+        </span>
+        <span class="autor"> - {{articles.author}} -</span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="created_at">
+      <mat-cell *matCellDef="let articles" (click)="getUrl(articles)"> 
+        <span class="time"> {{getFormatDate(articles)}} </span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <mat-cell *matCellDef="let articles" (click)="getDelete(articles)" [ngClass]="'rowTrash'"> 
+        <fa name="trash" size="1x"></fa>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
